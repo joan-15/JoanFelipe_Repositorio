@@ -3,5 +3,6 @@
     <string name="user">User</string>
     <string name="btn1">Login</string>
     <string name="btn2">Ingresar</string>
+    <string name="send">Enviar</string>
     <string name="Alarma">Alarma</string>
 </resources>

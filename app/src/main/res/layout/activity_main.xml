@@ -45,6 +45,16 @@
         </Button>
     </LinearLayout>
 
+    <LinearLayout>
+        <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bntSend"
+        android:text="@string/send">
+        </Button>
+    
+    </LinearLayout>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

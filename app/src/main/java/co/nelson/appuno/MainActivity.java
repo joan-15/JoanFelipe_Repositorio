@@ -1,5 +1,5 @@
 package co.nelson.appuno;
-
+hola
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         nombreUsuario = (TextView) findViewById(R.id.usuario);
         btn1 = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.btn2);
+        send = findViewById(R.id.btnSend);
         View Alarma = findViewById(R.id.Alarma);
 
         Alarma.setOnClickListener(new View.OnClickListener() {
@@ -49,8 +50,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pasarInformacion();
+                String textoActual = nombreUsuario.getText().TowString();
+                String nombre = "Juan Carlos";
+                Intent pasarInfo = new Intent(PantallaDos.class);
+                pasarInfo.putExtra("name",nombre);
+                startActivity(pasarInfo);
+            }
+        });}
+
 
     }
+
+    private void pasarInformacion(){
+        String textoActual = nombreUsuario.getText().TowString();
+        String nombre = "Juan Carlos";
+        Intent pasarInfo = new Intent(PantallaDos.class);
+        pasarInfo.putExtra("name",nombre);
+        startActivity(pasarInfo);
+        
+    }
+
+
 
     @Override
     protected void onStart() {
