@@ -1,5 +1,5 @@
 package co.nelson.appuno;
-hola
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,12 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.provider.MediaStore;
 
 public class MainActivity extends AppCompatActivity {
 
    TextView nombreUsuario;
    Button btn1,btn2;
    String Tag = "Prueba";
+   static final int REQUEST_IMAGE_CAPTURE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         btn2 = findViewById(R.id.btn2);
         send = findViewById(R.id.btnSend);
         View Alarma = findViewById(R.id.Alarma);
+        btnCapture = findViewById(R.id.btnCapture);
 
         Alarma.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +65,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });}
 
+        btnCapture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                capturePhoto("myPhoto.jpg");
+            }
+        });
+
 
     }
 
@@ -72,6 +82,22 @@ public class MainActivity extends AppCompatActivity {
         pasarInfo.putExtra("name",nombre);
         startActivity(pasarInfo);
         
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            if (extras != null) {
+            }
+        }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
     }
 
 
@@ -117,6 +143,23 @@ public class MainActivity extends AppCompatActivity {
                 .putExtra(AlarmClock.EXTRA_MESSAGE, message)
                 .putExtra(AlarmClock.EXTRA_HOUR, hour)
                 .putExtra(AlarmClock.EXTRA_MINUTES, minutes);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
+
+    public void startTimer(String message, int seconds) {
+        Intent intent = new Intent(AlarmClock.ACTION_SET_TIMER)
+                .putExtra(AlarmClock.EXTRA_MESSAGE, message)
+                .putExtra(AlarmClock.EXTRA_LENGTH, seconds)
+                .putExtra(AlarmClock.EXTRA_SKIP_UI, true);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
+
+    public void viewContact(Uri contactUri) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, contactUri);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }

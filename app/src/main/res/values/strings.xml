@@ -5,4 +5,7 @@
     <string name="btn2">Ingresar</string>
     <string name="send">Enviar</string>
     <string name="Alarma">Alarma</string>
+    <string name="capture">Capturar Foto</string>
+    <string name="view_contact">Ver Contacto</string>
+    <string name="btnCapturePhoto">Capturar Foto</string>
 </resources>
